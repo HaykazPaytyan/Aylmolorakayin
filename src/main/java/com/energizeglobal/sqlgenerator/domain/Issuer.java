@@ -9,6 +9,7 @@ import java.time.Instant;
 @Table(name = "Issuer")
 public class Issuer {
 
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
