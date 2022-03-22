@@ -4,12 +4,14 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.Instant;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "Issuer")
 public class Issuer {
 
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -26,6 +28,21 @@ public class Issuer {
 
     @Column
     String description;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "issuer")
+    private List<SubIssuer> subIssuers;
+
+    public List<SubIssuer> getSubIssuers() {
+        return subIssuers != null ? Collections.unmodifiableList(subIssuers) : null;
+    }
+
+    public void setSubIssuers(List<SubIssuer> subIssuers) {
+        if (subIssuers != null) {
+            this.subIssuers = subIssuers.stream().collect(Collectors.toList());
+        } else {
+            this.subIssuers = null;
+        }
+    }
 
     @Column(name = "lastUpdateBy")
     String lastUpdateBy;
