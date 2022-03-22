@@ -1,5 +1,6 @@
 package com.energizeglobal.sqlgenerator.mapping;
 
+
 import com.energizeglobal.sqlgenerator.domain.SubIssuer;
 import com.energizeglobal.sqlgenerator.dto.SubIssuerDto;
 

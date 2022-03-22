@@ -16,7 +16,7 @@ public class CryptoConfig {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToMany(mappedBy = "cryptoConfigEntity")
+    @OneToMany(mappedBy = "cryptoConfigurationEntity")
     @JsonIgnore
     private List<SubIssuer> linkedSubIssuers = new ArrayList<>();
 

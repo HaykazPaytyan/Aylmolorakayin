@@ -1,6 +1,5 @@
 package com.energizeglobal.sqlgenerator.domain;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -31,7 +30,7 @@ public class SubIssuer {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_id_cryptoConfig", referencedColumnName = "id")
     @JsonIgnore
-    private CryptoConfig cryptoConfigEntity;
+    private CryptoConfig cryptoConfigurationEntity;
 
 
     @Column(nullable = false)
