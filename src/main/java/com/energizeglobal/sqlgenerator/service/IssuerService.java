@@ -25,8 +25,8 @@ public class IssuerService {
 
     private final Logger log = LoggerFactory.getLogger(IssuerService.class);
 
-    String FILE_PATH = "src/main/resources/sql_scripts/";
-    String FILE_NAME = "issuer_insert.sql";
+    private String FILE_PATH = "src/main/resources/sql_scripts/";
+    private String FILE_NAME = "issuer_insert.sql";
 
     private final IssuerRepository issuerRepository;
 
@@ -37,9 +37,7 @@ public class IssuerService {
     @Transactional(readOnly = true)
     public List<Issuer> getAllIssuer(){
 
-        List<Issuer> issuerList = issuerRepository.findAll();
-
-        return issuerList;
+        return issuerRepository.findAll();
     }
 
     public String generateInsertSqlScript(IssuerDTO dto){
