@@ -9,7 +9,7 @@ export class IssuerService {
   constructor(private http: HttpClient) { }
 
   getAllIssuer(){
-    return  this.http.get('/issuer');
+    return  this.http.get('/issuers');
   }
 
   sendIssuerData(issuerData:any){
@@ -18,5 +18,17 @@ export class IssuerService {
 
   downloadFile(filename: String){
     return this.http.get('/issuer/script/download/'+filename, { responseType: 'blob'});
+  }
+
+  store(data: string){
+
+  }
+
+  save(data: string){
+
+  }
+
+  destroy(data: string){
+
   }
 }

@@ -10,38 +10,43 @@ import {saveAs} from 'file-saver';
 })
 export class IssuerComponent implements OnInit {
 
-  issuers: any;
-  issuerForm: any;
+  issuers: any = [];
   filename: string ="";
+  filterTerm!: string;
+  showOnchange: boolean = false;
 
   constructor(private issuerService: IssuerService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.initializeForm();
     this.getAllIssuer();
   }
 
-  initializeForm(){
-    this.issuerForm = this.formBuilder.group({
-      code: ['', Validators.required],
-      name: ['', Validators.required],
-      createdBy: ['', Validators.required],
-      description: ['', Validators.required]
-    });
-  }
 
   getAllIssuer(){
     this.issuerService.getAllIssuer().subscribe(issuers => {
-      this.issuers = issuers;
+        this.issuers = issuers;
     });
   }
 
-  sendIssuerData(){
-    let issuerData = this.issuerForm.value;
-    this.issuerService.sendIssuerData(issuerData).subscribe(response => {this.filename = response;})
-  }
 
   downloadFile(){
     this.issuerService.downloadFile(this.filename).subscribe(file => saveAs(file, this.filename));
+  }
+
+  listOfIssuers(){
+     console.log(this.filterTerm);
+     this.showOnchange = true;
+  }
+
+  create(data: string){
+
+  }
+
+  update(data: string){
+
+  }
+
+  delete(data: string){
+
   }
 }

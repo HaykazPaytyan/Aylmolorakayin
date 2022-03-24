@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 @RestController
-@RequestMapping("/issuer")
+@RequestMapping("/issuers")
 public class IssuerController {
 
     private final Logger log = LoggerFactory.getLogger(IssuerController.class);
