@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Table(name = "CryptoConfig")
+@Table(name = "cryptoconfig")
 public class CryptoConfig {
 
   @Id
@@ -14,19 +14,13 @@ public class CryptoConfig {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @Column(columnDefinition = "text")
-  //        @Type(type = "com.worldline.acs.config.crypto.one.JsonCryptoConfig")
-  //        private CryptoConfigurationMap3DS1 protocolOne;
+  @Column(name = "protocolOne")
   private String protocolOne;
 
-  @Column(columnDefinition = "text")
-  // @Type(type = "com.worldline.acs.config.crypto.two.JsonCryptoConfig")
-  // private CryptoConfigurationMap3DS2 protocolTwo;
+  @Column(name = "protocolTwo")
   private String protocolTwo;
 
-  // this field is only here for convenience with SQL scripts and as a discriminator among crypto
-  // configurations in DB
-  @Column
+  @Column(name = "description")
   private String description;
 
   //  @OneToMany(mappedBy = "cryptoConfigurationEntity")
