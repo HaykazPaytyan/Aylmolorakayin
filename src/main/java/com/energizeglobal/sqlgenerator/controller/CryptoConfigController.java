@@ -45,7 +45,8 @@ public class CryptoConfigController {
 
   @PutMapping("/update")
   public ResponseEntity<String> updateCryptoConfig(@RequestBody CryptoConfigDTO cryptoConfigDTO) {
-    String filename = cryptoConfigServiceImpl.saveCryptoConfig(cryptoConfigDTO);
+    System.out.println("1213131321"+cryptoConfigDTO);
+    String filename = cryptoConfigServiceImpl.updateCryptoConfig(cryptoConfigDTO);
     return ResponseEntity.ok(filename);
   }
 
