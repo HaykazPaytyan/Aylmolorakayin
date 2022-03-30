@@ -21,7 +21,6 @@ public class CryptoConfigController {
 
   @GetMapping
   private ResponseEntity<List<CryptoConfigDTO>> getAllCryptoConfigs() {
-
     List<CryptoConfigDTO> cryptoConfigDTOS = cryptoConfigServiceImpl.findAllCryptoConfigs();
     return ResponseEntity.ok(cryptoConfigDTOS);
   }
@@ -34,13 +33,18 @@ public class CryptoConfigController {
 
   @DeleteMapping("/{id}")
   private ResponseEntity deletById(@PathVariable Long id) {
-    System.out.println(id);
     String filename = cryptoConfigServiceImpl.deleteById(id);
     return ResponseEntity.ok(filename);
   }
 
   @PostMapping()
   public ResponseEntity<String> saveCryptoConfig(@RequestBody CryptoConfigDTO cryptoConfigDTO) {
+    String filename = cryptoConfigServiceImpl.saveCryptoConfig(cryptoConfigDTO);
+    return ResponseEntity.ok(filename);
+  }
+
+  @PutMapping("/update")
+  public ResponseEntity<String> updateCryptoConfig(@RequestBody CryptoConfigDTO cryptoConfigDTO) {
     String filename = cryptoConfigServiceImpl.saveCryptoConfig(cryptoConfigDTO);
     return ResponseEntity.ok(filename);
   }

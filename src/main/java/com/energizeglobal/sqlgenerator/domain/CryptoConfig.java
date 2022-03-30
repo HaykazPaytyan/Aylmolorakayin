@@ -3,11 +3,12 @@ package com.energizeglobal.sqlgenerator.domain;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
 @Table(name = "cryptoconfig")
-public class CryptoConfig {
+public class CryptoConfig implements Serializable {
 
   @Id
   @Column

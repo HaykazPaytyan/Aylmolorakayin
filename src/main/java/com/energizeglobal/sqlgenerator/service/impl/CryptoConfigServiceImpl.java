@@ -78,6 +78,28 @@ public class CryptoConfigServiceImpl implements CryptoConfigService {
     return FILE_NAME;
   }
 
+  public String updateCryptoConfig(CryptoConfigDTO cryptoConfigDTO) {
+
+    CryptoConfig cryptoConfig = mapping.convertToEntity(cryptoConfigDTO);
+
+    String query =
+            "update `cryptoconfig` set `protocolOne` = '"
+                    + cryptoConfig.getProtocolOne()
+                    + "',`protocolTwo` = '"
+                    + cryptoConfig.getProtocolTwo()
+                    + "', `description` = '"
+                    + cryptoConfig.getDescription()
+                    + "' WHERE id ='"
+                    + cryptoConfig.getId()
+                    + "'";
+
+    generateSqlScriptServiceImpl.insertSqlScript(query);
+
+    cryptoConfigRepository.save(cryptoConfig);
+
+    return FILE_NAME;
+  }
+
   public Resource getDownloadFile(String FILE_NAME) {
     return downloadFileServiceImpl.downloadFile(FILE_NAME, FILE_PATH);
   }
